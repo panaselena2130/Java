@@ -1,8 +1,10 @@
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Teacher extends Person {
     int wage;
+
 
 
 
@@ -23,22 +25,64 @@ public class Teacher extends Person {
 //    }
 
     public void input() {
+        System.out.println(status); //It's for me to know wats is value of status;
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter ID:");
-        this.id = scan.nextInt();
+
+        while (true)
+        {
+
+            try
+            {
+                this.id = scan.nextInt();
+                break;
+            }
+            catch (Exception ayde)
+            {
+
+                System.out.println("Invalid input, try again");
+                scan.nextLine();
+
+            }
+
+        }
+//        {if (scan.hasNextInt()){
+//            this.id = scan.nextInt();
+//            System.out.println("Input correct");
+//
+//        }
+//        else {
+//            System.out.println("Invalid input. Return to main menu");
+//            return;
+//        }
+//
+//        }
+
         System.out.println("Enter firstName:");
         this.firstName = scan.next();
         System.out.println("Enter lastName:");
         this.lastName = scan.next();
         System.out.println("Enter wage:");
-        this.wage = scan.nextInt();
+        while (true)
+        {
+            try {this.wage = scan.nextInt();
+                break;
+
+        }
+            catch (Exception salary){
+                System.out.println("Invalid input, try again");
+                scan.nextLine();
+            }
+
+        }
+
         System.out.println("Enter status: (ONE: Single, TWO: Married, THREE: Divorced");
         this.status = switch (scan.next().toUpperCase()) {
             case "ONE" -> MartialStatus.SINGLE;
             case "TWO" -> MartialStatus.MARRIED;
             case "THREE" -> MartialStatus.DIVORCED;
-            default -> status;
+            default -> status ;
         };
 
     }
